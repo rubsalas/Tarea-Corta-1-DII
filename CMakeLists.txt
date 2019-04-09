@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.13)
-project(untitled1)
+project(Tarea_Corta_1)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(untitled1 main.cpp Fabrica.cpp Fabrica.h Vehiculo.cpp Vehiculo.h)
+add_executable(Tarea_Corta_1 main.cpp Vehiculo.cpp Vehiculo.h Fabrica.cpp Fabrica.h)
