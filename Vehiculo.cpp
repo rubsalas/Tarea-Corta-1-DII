@@ -53,7 +53,7 @@ Vehiculo::Vehiculo(int _tipo) {
         tiempoPD = 3;
         tiempoPE = 4;
         tiempoPF = 1;
-    } else { /// _tipo == 6
+    } else if (_tipo == 6){
         tiempoPA = 4;
         tiempoPB = 4;
         tiempoPC = 2;
@@ -62,10 +62,79 @@ Vehiculo::Vehiculo(int _tipo) {
         tiempoPF = 1;
     }
 
+    else{
+        cout<<"No existe este tipo de vehiculo"<<endl;
+    }
 }
 
 
 ///Getters & Setters
+
+/**
+ * Getter tipo de vehiculo
+ * @return tipo - string
+ */
+string Vehiculo::getTipo() {
+    return tipo;
+}
+
+
+/**
+ * Setter tipo de vehiculo
+ * @param tipo
+ */
+void Vehiculo::setTipo(int _tipo) {
+
+    tipo = "Vehículo Tipo: " + to_string(_tipo);
+    if (_tipo == 1) {
+        tiempoPA = 2;
+        tiempoPB = 2;
+        tiempoPC = 4;
+        tiempoPD = 1;
+        tiempoPE = 3;
+        tiempoPF = 1;
+    } else if (_tipo == 2) {
+        tiempoPA = 1;
+        tiempoPB = 1;
+        tiempoPC = 2;
+        tiempoPD = 3;
+        tiempoPE = 2;
+        tiempoPF = 1;
+    } else if (_tipo == 3) {
+        tiempoPA = 3;
+        tiempoPB = 1;
+        tiempoPC = 2;
+        tiempoPD = 1;
+        tiempoPE = 4;
+        tiempoPF = 1;
+    } else if (_tipo == 4) {
+        tiempoPA = 3;
+        tiempoPB = 2;
+        tiempoPC = 1;
+        tiempoPD = 4;
+        tiempoPE = 1;
+        tiempoPF = 2;
+    } else if (_tipo == 5) {
+        tiempoPA = 1;
+        tiempoPB = 2;
+        tiempoPC = 4;
+        tiempoPD = 3;
+        tiempoPE = 4;
+        tiempoPF = 1;
+    } else if (_tipo == 6){
+        tiempoPA = 4;
+        tiempoPB = 4;
+        tiempoPC = 2;
+        tiempoPD = 1;
+        tiempoPE = 3;
+        tiempoPF = 1;
+    }
+
+    else{
+        cout<<"No existe este tipo de vehiculo"<<endl;
+    }
+
+}
 
 
 /**
@@ -164,7 +233,6 @@ void Vehiculo::setTiempoPF(int tiempoPF) {
     Vehiculo::tiempoPF = tiempoPF;
 }
 
-
 ///Metodos
 
 
@@ -179,4 +247,28 @@ void Vehiculo::printTimes() {
     cout << "Tiempo D: " + to_string(getTiempoPD()) << endl;
     cout << "Tiempo E: " + to_string(getTiempoPE()) << endl;
     cout << "Tiempo F: " + to_string(getTiempoPF()) << endl;
+}
+
+void Vehiculo::modPA() {
+    tiempoPA=tiempoPA-1;
+}
+
+void Vehiculo::modPB() {
+    tiempoPB=tiempoPB-1;
+}
+
+void Vehiculo::modPC() {
+    tiempoPC=tiempoPC-1;
+}
+
+void Vehiculo::modPD() {
+    tiempoPD=tiempoPD-1;
+}
+
+void Vehiculo::modPE() {
+    tiempoPE=tiempoPE-1;
+}
+
+void Vehiculo::modPF() {
+    tiempoPF=tiempoPF-1;
 }

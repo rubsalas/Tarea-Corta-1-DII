@@ -29,6 +29,8 @@ public:
     Vehiculo(int _tipo);
 
     ///Getters & Setters
+    string getTipo();
+    void setTipo(int _tipo);
     int getTiempoPA() const;
     void setTiempoPA(int tiempoPA);
     int getTiempoPB() const;
@@ -44,6 +46,13 @@ public:
 
     ///Metodos
     void printTimes();
+    void modPA();
+    void modPB();
+    void modPC();
+    void modPD();
+    void modPE();
+    void modPF();
+
 
 };
 
