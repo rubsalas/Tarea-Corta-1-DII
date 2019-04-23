@@ -4,6 +4,7 @@
 
 #include "Vehiculo.h"
 #include "Fabrica.h"
+#include "Proceso.h"
 
 using namespace std;
 
@@ -13,31 +14,35 @@ using namespace std;
  */
 int main() {
 
-    ///Instancia de un Vehiculo
-    Vehiculo* vehiculo1 = new Vehiculo(1);
-    ///Impresion de sus tiempos de los procesos
-    vehiculo1->printTimes();
+    ///Instanciacion de la Fabrica
+    Fabrica* fabrica = new Fabrica();
 
-    Vehiculo* vehiculo2 = new Vehiculo(3);
-    Vehiculo* vehiculo3 = new Vehiculo(4);
-    Vehiculo* vehiculo4 = new Vehiculo(6);
-    Vehiculo* vehiculo5 = new Vehiculo(2);
+    ///Ingreso de vehiculos
+    fabrica->addVehiculo(1);
+    fabrica->addVehiculo(2);
+    fabrica->addVehiculo(3);
+    fabrica->addVehiculo(4);
+    fabrica->addVehiculo(5);
+    fabrica->addVehiculo(6);
+    //         ... xn       //Se podria ingresar n cantidad de vehiculos
+    //fabrica->addVehiculo(#);
 
-    vehiculo2->printTimes();
-    vehiculo3->printTimes();
 
-    Fabrica* fab;
 
-    fab->linea_A(vehiculo1,vehiculo2,vehiculo3);
-    fab->linea_B(vehiculo1,vehiculo2,vehiculo3);
+    /*
+    proc1 = Proceso(1,3,4,2,5,6);
+    proc2 = Proceso(5,2,1,3,6,4);
 
-    vehiculo1->printTimes();
-    vehiculo2->printTimes();
-    vehiculo3->printTimes();
-    //fab->addVeh(2);
-    //fab->addVeh(3);
-    //fab->addVeh(4);
-    //fab->addVeh(5);
+    fab->addProcesoA(proc1);
+    fab->addProcesoB(proc2);
+    */
+
+
+
+
+
+    //Se deberia correr la fabrica automaticamete despues de esta llamada
+    fabrica->initiateFabrica();
 
     return 0;
 }

@@ -7,7 +7,6 @@
  * Representará un Vehiculo
  *
  * @since 08/04/19
- * @author Rubén Salas
  */
 
 
@@ -25,6 +24,14 @@ Vehiculo::Vehiculo(int _tipo) {
         tiempoPD = 1;
         tiempoPE = 3;
         tiempoPF = 1;
+        /*
+        orden->newNode();
+        orden->newNode();
+        orden->newNode();
+        orden->newNode();
+        orden->newNode();
+        orden->newNode();
+         */
     } else if (_tipo == 2) {
         tiempoPA = 1;
         tiempoPB = 1;
@@ -32,6 +39,14 @@ Vehiculo::Vehiculo(int _tipo) {
         tiempoPD = 3;
         tiempoPE = 2;
         tiempoPF = 1;
+        /*
+        orden->newNode();
+        orden->newNode();
+        orden->newNode();
+        orden->newNode();
+        orden->newNode();
+        orden->newNode();
+         */
     } else if (_tipo == 3) {
         tiempoPA = 3;
         tiempoPB = 1;
@@ -39,6 +54,14 @@ Vehiculo::Vehiculo(int _tipo) {
         tiempoPD = 1;
         tiempoPE = 4;
         tiempoPF = 1;
+        /*
+        orden->newNode();
+        orden->newNode();
+        orden->newNode();
+        orden->newNode();
+        orden->newNode();
+        orden->newNode();
+         */
     } else if (_tipo == 4) {
         tiempoPA = 3;
         tiempoPB = 2;
@@ -46,6 +69,14 @@ Vehiculo::Vehiculo(int _tipo) {
         tiempoPD = 4;
         tiempoPE = 1;
         tiempoPF = 2;
+        /*
+        orden->newNode();
+        orden->newNode();
+        orden->newNode();
+        orden->newNode();
+        orden->newNode();
+        orden->newNode();
+         */
     } else if (_tipo == 5) {
         tiempoPA = 1;
         tiempoPB = 2;
@@ -53,6 +84,14 @@ Vehiculo::Vehiculo(int _tipo) {
         tiempoPD = 3;
         tiempoPE = 4;
         tiempoPF = 1;
+        /*
+        orden->newNode();
+        orden->newNode();
+        orden->newNode();
+        orden->newNode();
+        orden->newNode();
+        orden->newNode();
+         */
     } else if (_tipo == 6){
         tiempoPA = 4;
         tiempoPB = 4;
@@ -60,6 +99,14 @@ Vehiculo::Vehiculo(int _tipo) {
         tiempoPD = 1;
         tiempoPE = 3;
         tiempoPF = 1;
+        /*
+        orden->newNode();
+        orden->newNode();
+        orden->newNode();
+        orden->newNode();
+        orden->newNode();
+        orden->newNode();
+         */
     }
 
     else{
@@ -232,6 +279,7 @@ int Vehiculo::getTiempoPF() const {
 void Vehiculo::setTiempoPF(int tiempoPF) {
     Vehiculo::tiempoPF = tiempoPF;
 }
+
 
 ///Metodos
 

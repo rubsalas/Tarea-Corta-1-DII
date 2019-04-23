@@ -1,6 +1,3 @@
-//
-// Created by edgargonza on 16/04/19.
-//
 
 #include <iostream>
 #include <stdlib.h>
@@ -12,15 +9,14 @@ using namespace std;
 /**
  * Representa a un Nodo.
  *
- * @since 07/03/19.
+ * @since 16/04/19.
  */
 
 /**
  * Constructor de Node.
  */
 Node::Node(int _data) {
-    //veh = new Vehiculo();
-    //veh->setTipo(_data);
+    vehiculo = new Vehiculo(_data);
     data = _data;
     next = nullptr;
 }
@@ -56,4 +52,20 @@ Node* Node::getNext(){
  */
 void Node::setNext(Node* _next){
     next = _next;
+}
+
+/**
+ * Getter del Vehiculo
+ * @returns vehiculo - Vehiculo
+ */
+Vehiculo* Node::getVehiculo() {
+    return vehiculo;
+}
+
+/**
+ * Setter del vehiculo
+ * @param _vehiculo - Vehiculo
+ */
+void Node::setVehiculo(Vehiculo* _vehiculo){
+    vehiculo = _vehiculo;
 }

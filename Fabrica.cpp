@@ -1,5 +1,6 @@
 #include <iostream>
 #include <stdlib.h>
+#include <unistd.h>
 
 #include "Fabrica.h"
 
@@ -9,19 +10,156 @@ using namespace std;
  * Representará la Fabrica de Vehiculos
  *
  * @since 08/04/19
- * @author Rubén Salas
  */
 
 
 /**
  * Constructor de Fabrica
  */
-
 Fabrica::Fabrica() {
-    listVehiculos = new List();
+    listVehiculosInicial = new List();
+    listVehiculosCola = new List();
+    listVehiculosFinalizados = new List();
 }
 
-int Fabrica::initiateFab() {
+
+/**
+ *
+ * @return
+ */
+List *Fabrica::getListVehiculosInicial() {
+    return listVehiculosInicial;
+}
+
+void Fabrica::setListVehiculosInicial(List *listVehiculosInicial) {
+    Fabrica::listVehiculosInicial = listVehiculosInicial;
+}
+
+/**
+ *
+ * @return
+ */
+List *Fabrica::getListVehiculosCola() {
+    return listVehiculosCola;
+}
+
+void Fabrica::setListVehiculosCola(List *listVehiculosCola) {
+    Fabrica::listVehiculosCola = listVehiculosCola;
+}
+
+/**
+ *
+ * @return
+ */
+List *Fabrica::getListVehiculosFinalizados() {
+    return listVehiculosFinalizados;
+}
+
+void Fabrica::setListVehiculosFinalizados(List *listVehiculosFinalizados) {
+    Fabrica::listVehiculosFinalizados = listVehiculosFinalizados;
+}
+
+/**
+ *
+ * @return
+ */
+Proceso *Fabrica::getProcesoA() {
+    return procesoA;
+}
+
+/**
+ *
+ * @param procesoA
+ */
+void Fabrica::setProcesoA(Proceso* _procesoA) {
+    procesoA = _procesoA;
+}
+
+/**
+ *
+ * @return
+ */
+Proceso *Fabrica::getProcesoB() {
+    return procesoB;
+}
+
+/**
+ *
+ * @param _procesoB
+ */
+void Fabrica::setProcesoB(Proceso* _procesoB) {
+    procesoB = _procesoB;
+}
+
+/**
+ *
+ * @return
+ */
+Proceso *Fabrica::getProcesoC() {
+    return procesoC;
+}
+
+/**
+ *
+ * @param _procesoC
+ */
+void Fabrica::setProcesoC(Proceso* _procesoC) {
+    procesoC = _procesoC;
+}
+
+/**
+ *
+ * @return
+ */
+Proceso *Fabrica::getProcesoD() {
+    return procesoD;
+}
+
+/**
+ *
+ * @param _procesoD
+ */
+void Fabrica::setProcesoD(Proceso* _procesoD) {
+    procesoD = _procesoD;
+}
+
+/**
+ *
+ * @return
+ */
+Proceso *Fabrica::getProcesoE() {
+    return procesoE;
+}
+
+/**
+ *
+ * @param _procesoE
+ */
+void Fabrica::setProcesoE(Proceso* _procesoE) {
+    procesoE = _procesoE;
+}
+
+/**
+ *
+ * @return
+ */
+Proceso *Fabrica::getProcesoF() {
+    return procesoF;
+}
+
+/**
+ *
+ * @param _procesoF
+ */
+void Fabrica::setProcesoF(Proceso* _procesoF) {
+    procesoF = _procesoF;
+}
+
+
+/**
+ * Inicio de la Fabrica.
+ */
+void Fabrica::initiateFabrica() {
     int s=1;
 
     while(1){
@@ -32,45 +170,16 @@ int Fabrica::initiateFab() {
         cout<<s<<endl;
         s++;
         sleep(1);
+
+        ///Poner terminacion cuando todos los vehiculos esten listos
+
     }
 }
 
-void Fabrica::addVeh(int veh) {
-    listVehiculos->newNode(veh);
-}
-
-int Fabrica::linea_A(Vehiculo *veh1, Vehiculo *veh2, Vehiculo *veh3) {
-    veh1->modPA();
-    veh2->modPA();
-    veh3->modPA();
-}
-
-int Fabrica::linea_B(Vehiculo *veh1, Vehiculo *veh2, Vehiculo *veh3) {
-    veh1->modPB();
-    veh2->modPB();
-    veh3->modPB();
-}
-
-int Fabrica::linea_C(Vehiculo *veh1, Vehiculo *veh2, Vehiculo *veh3) {
-    veh1->modPC();
-    veh2->modPC();
-    veh3->modPC();
-}
-
-int Fabrica::linea_D(Vehiculo *veh1, Vehiculo *veh2, Vehiculo *veh3) {
-    veh1->modPD();
-    veh2->modPD();
-    veh3->modPD();
-}
-
-int Fabrica::linea_E(Vehiculo *veh1, Vehiculo *veh2, Vehiculo *veh3) {
-    veh1->modPE();
-    veh2->modPE();
-    veh3->modPE();
-}
-
-int Fabrica::linea_F(Vehiculo *veh1, Vehiculo *veh2, Vehiculo *veh3) {
-    veh1->modPF();
-    veh2->modPF();
-    veh3->modPF();
+/**
+ * Ingresa un vehiculo a la lista de Vehiuclos de la Fabrica
+ * @param vehiculo - int del numero de vehiculo
+ */
+void Fabrica::addVehiculo(int vehiculo) {
+    listVehiculosInicial->newNode(vehiculo);
 }

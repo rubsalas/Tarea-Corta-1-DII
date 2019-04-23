@@ -1,6 +1,3 @@
-//
-// Created by edgargonza on 16/04/19.
-//
 
 #ifndef TAREA_CORTA_1_LIST_H
 #define TAREA_CORTA_1_LIST_H
@@ -8,12 +5,9 @@
 #include <stdlib.h>
 
 #include "Node.h"
-#include "Collector.h"
 
 /**
  * Header de List.
- *
- * @since 07/03/19.
  */
 class List {
 
@@ -22,15 +16,18 @@ private:
     Node* head;
     ///Cantidad de nodos en List
     int len;
-    ///Collector unico del programa
-    Collector* collector;
 
 public:
+    ///Constructor
     List();
+
+    ///Getters y Setters
     Node* getHead();
     void setHead(Node* _head);
     int getLen();
     void setLen(int _len);
+
+    ///Metodos
     void newNode(int data);
     void deleteNode(int data);
     void printList();

@@ -3,39 +3,65 @@
 #define TAREA_CORTA_1_FABRICA_H
 
 
-/**
- * Archivo h de Fabrica
- */
-
 #include <stdio.h>
 #include <unwind.h>
 #include <cstdlib>
-#include <zconf.h>
 #include <iostream>
 #include <stdlib.h>
 #include "List.h"
+#include "Vehiculo.h"
+#include "Node.h"
+#include "Proceso.h"
 
 using  namespace std;
+
+
+/**
+ * Header de Fabrica
+ */
+
 
 class Fabrica {
 
 private:
-    List* listVehiculos;
+    List* listVehiculosInicial;
+    List* listVehiculosCola;
+    List* listVehiculosFinalizados;
+    Proceso* procesoA;
+    Proceso* procesoB;
+    Proceso* procesoC;
+    Proceso* procesoD;
+    Proceso* procesoE;
+    Proceso* procesoF;
 
 public:
+    ///Constructor
     Fabrica();
-    void addVeh(int veh);
 
-    //Iniciar proceso
-    int initiateFab();
+    ///Getters y Setters
+    List *getListVehiculosInicial();
+    void setListVehiculosInicial(List* _listVehiculosInicial);
+    List *getListVehiculosCola();
+    void setListVehiculosCola(List* _listVehiculosCola);
+    List *getListVehiculosFinalizados();
+    void setListVehiculosFinalizados(List* _listVehiculosFinalizados);
+    Proceso *getProcesoA();
+    void setProcesoA(Proceso* _procesoA);
+    Proceso *getProcesoB();
+    void setProcesoB(Proceso* _procesoB);
+    Proceso *getProcesoC();
+    void setProcesoC(Proceso* _procesoC);
+    Proceso *getProcesoD();
+    void setProcesoD(Proceso* _procesoD);
+    Proceso *getProcesoE();
+    void setProcesoE(Proceso* _procesoE);
+    Proceso *getProcesoF();
+    void setProcesoF(Proceso* _procesoF);
 
-    //Procesos de la Fabrica
-    int linea_A(Vehiculo *veh1, Vehiculo *veh2, Vehiculo *veh3);
-    int linea_B(Vehiculo *veh1, Vehiculo *veh2, Vehiculo *veh3);
-    int linea_C(Vehiculo *veh1, Vehiculo *veh2, Vehiculo *veh3);
-    int linea_D(Vehiculo *veh1, Vehiculo *veh2, Vehiculo *veh3);
-    int linea_E(Vehiculo *veh1, Vehiculo *veh2, Vehiculo *veh3);
-    int linea_F(Vehiculo *veh1, Vehiculo *veh2, Vehiculo *veh3);
+    ///Metodos
+    void addVehiculo(int vehiculo);
+    void initiateFabrica();
+    
 };
 
 

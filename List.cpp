@@ -1,6 +1,3 @@
-//
-// Created by edgargonza on 16/04/19.
-//
 
 #include "List.h"
 #include <iostream>
@@ -12,7 +9,7 @@ using namespace std;
 /**
  * Representa a una Lista.
  *
- * @since 07/03/19.
+ * @since 16/04/19.
  */
 
 /**
@@ -20,7 +17,6 @@ using namespace std;
  */
 List::List() {
     head = nullptr;
-    collector = Collector::getInstance();
     len = 0;
 }
 
@@ -52,25 +48,14 @@ void List::setLen(int _len) {
     len = _len;
 }
 
+
 /**
  * Crea un nuevo Node o toma uno del Collector para ingresarlo en List.
  * @param data - numero para el Node
  */
 void List::newNode(int data){
 
-    int lenCollector = collector->getLen(); //len collector
-
-    Node* nNode;
-
-    if (lenCollector != 0) {
-        nNode = collector->getHead();
-        collector->setHead(nNode->getNext());
-        nNode->setData(data);
-        nNode->setNext(nullptr);
-        collector->setLen(collector->getLen()-1);
-    } else {
-        nNode = new Node(data);
-    }
+    Node* nNode = new Node(data);
 
     if (head == nullptr) {
         head = nNode;
@@ -84,8 +69,6 @@ void List::newNode(int data){
 
     cout << "\n" << endl;
     printList();
-    collector->printList();
-
 
 }
 
@@ -113,14 +96,11 @@ void List::deleteNode(int data){
     }
 
     delNode->setNext(nullptr);
-    cout << "El nodo " << data << " fue enviado al Collector." << endl;
-    collector->addNode(delNode);
 
     len-=1;
 
     cout << "\n" << endl;
     printList();
-    collector->printList();
 
 }
 

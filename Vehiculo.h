@@ -4,12 +4,13 @@
 
 
 #include <iostream>
+#include "List.h"
 
 using namespace std;
 
 
 /**
- * Archivo h de Vehiculo
+ * Header de Vehiculo
  */
 
 
@@ -23,6 +24,7 @@ private:
     int tiempoPD;
     int tiempoPE;
     int tiempoPF;
+    List* orden; // [A,B,C,D,E,F]
 
 public:
     ///Constructor
@@ -52,7 +54,6 @@ public:
     void modPD();
     void modPE();
     void modPF();
-
 
 };
 
