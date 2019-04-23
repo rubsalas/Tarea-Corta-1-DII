@@ -33,3 +33,19 @@ string Proceso::getTipo(){
 void Proceso::setTipo(string _tipo){
     tipo = _tipo;
 }
+
+int Proceso::agenda(Vehiculo *veh) {
+    if (vehiculo1== nullptr){
+        vehiculo1 = new Vehiculo(veh->getTipo());
+    }
+    else if (vehiculo2== nullptr){
+        vehiculo2 = new Vehiculo(veh->getTipo());
+    }
+    else if (vehiculo3== nullptr){
+        vehiculo3 = new Vehiculo(veh->getTipo());
+    }
+    else{
+        cout<<"No hay espacio en la agenda del proceso "<<tipo<<endl;
+        return 0;
+    }
+}

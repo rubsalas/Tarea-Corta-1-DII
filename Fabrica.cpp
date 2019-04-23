@@ -20,6 +20,13 @@ Fabrica::Fabrica() {
     listVehiculosInicial = new List();
     listVehiculosCola = new List();
     listVehiculosFinalizados = new List();
+
+    procesoA = new Proceso("A");
+    procesoB = new Proceso("B");
+    procesoC = new Proceso("C");
+    procesoD = new Proceso("D");
+    procesoE = new Proceso("E");
+    procesoF = new Proceso("F");
 }
 
 
@@ -162,17 +169,20 @@ void Fabrica::setProcesoF(Proceso* _procesoF) {
 void Fabrica::initiateFabrica() {
     int s=1;
 
-    while(1){
+    bool finish=false;
+    while(!finish){
         if (s==6){
             s=1;
-            cout<<"Cambio de proceso"<<endl;
+
+
+
+        }
+        if (listVehiculosInicial->getLen()==0){
+            finish=true;
         }
         cout<<s<<endl;
         s++;
         sleep(1);
-
-        ///Poner terminacion cuando todos los vehiculos esten listos
-
     }
 }
 
@@ -182,4 +192,20 @@ void Fabrica::initiateFabrica() {
  */
 void Fabrica::addVehiculo(int vehiculo) {
     listVehiculosInicial->newNode(vehiculo);
+}
+
+void Fabrica::setInProceso() {
+    Vehiculo *veh = listVehiculosInicial->getHead()->getVehiculo();
+    listVehiculosInicial->deleteNode(veh->getTipo());
+
+    string actual = veh->getOrden();
+
+    if (actual=="A"){
+
+    }
+    else if (actual=="B"){}
+    else if (actual=="C"){}
+    else if (actual=="D"){}
+    else if (actual=="E"){}
+    else if (actual=="F"){}
 }

@@ -21,6 +21,10 @@ public:
     ///Getters y Setters
     string getTipo();
     void setTipo(string _tipo);
+    //Vehiculo* get
+
+    ///Agenda
+    int agenda(Vehiculo* veh);
 
 };
 

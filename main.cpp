@@ -19,11 +19,13 @@ int main() {
 
     ///Ingreso de vehiculos
     fabrica->addVehiculo(1);
-    fabrica->addVehiculo(2);
+
+    fabrica->setInProceso();
+    /*fabrica->addVehiculo(2);
     fabrica->addVehiculo(3);
     fabrica->addVehiculo(4);
     fabrica->addVehiculo(5);
-    fabrica->addVehiculo(6);
+    fabrica->addVehiculo(6);*/
     //         ... xn       //Se podria ingresar n cantidad de vehiculos
     //fabrica->addVehiculo(#);
 
@@ -42,7 +44,7 @@ int main() {
 
 
     //Se deberia correr la fabrica automaticamete despues de esta llamada
-    fabrica->initiateFabrica();
+    //fabrica->initiateFabrica();
 
     return 0;
 }

@@ -61,6 +61,7 @@ public:
     ///Metodos
     void addVehiculo(int vehiculo);
     void initiateFabrica();
+    void setInProceso();
     
 };
 

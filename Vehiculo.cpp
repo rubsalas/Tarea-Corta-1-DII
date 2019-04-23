@@ -16,7 +16,7 @@
  * @param _tipo - Int con el numero del tipo del vehiculo
  */
 Vehiculo::Vehiculo(int _tipo) {
-    tipo = "Vehículo Tipo: " + to_string(_tipo);
+    tipo = _tipo;
     if (_tipo == 1) {
         tiempoPA = 2;
         tiempoPB = 2;
@@ -24,14 +24,13 @@ Vehiculo::Vehiculo(int _tipo) {
         tiempoPD = 1;
         tiempoPE = 3;
         tiempoPF = 1;
-        /*
-        orden->newNode();
-        orden->newNode();
-        orden->newNode();
-        orden->newNode();
-        orden->newNode();
-        orden->newNode();
-         */
+        orden[0]="A";
+        orden[1]="B";
+        orden[2]="C";
+        orden[3]="D";
+        orden[4]="E";
+        orden[5]="F";
+
     } else if (_tipo == 2) {
         tiempoPA = 1;
         tiempoPB = 1;
@@ -39,14 +38,13 @@ Vehiculo::Vehiculo(int _tipo) {
         tiempoPD = 3;
         tiempoPE = 2;
         tiempoPF = 1;
-        /*
-        orden->newNode();
-        orden->newNode();
-        orden->newNode();
-        orden->newNode();
-        orden->newNode();
-        orden->newNode();
-         */
+        orden[0]="C";
+        orden[1]="A";
+        orden[2]="B";
+        orden[3]="E";
+        orden[4]="D";
+        orden[5]="F";
+
     } else if (_tipo == 3) {
         tiempoPA = 3;
         tiempoPB = 1;
@@ -54,14 +52,13 @@ Vehiculo::Vehiculo(int _tipo) {
         tiempoPD = 1;
         tiempoPE = 4;
         tiempoPF = 1;
-        /*
-        orden->newNode();
-        orden->newNode();
-        orden->newNode();
-        orden->newNode();
-        orden->newNode();
-        orden->newNode();
-         */
+        orden[0]="D";
+        orden[1]="E";
+        orden[2]="A";
+        orden[3]="C";
+        orden[4]="B";
+        orden[5]="F";
+
     } else if (_tipo == 4) {
         tiempoPA = 3;
         tiempoPB = 2;
@@ -69,14 +66,13 @@ Vehiculo::Vehiculo(int _tipo) {
         tiempoPD = 4;
         tiempoPE = 1;
         tiempoPF = 2;
-        /*
-        orden->newNode();
-        orden->newNode();
-        orden->newNode();
-        orden->newNode();
-        orden->newNode();
-        orden->newNode();
-         */
+        orden[0]="B";
+        orden[1]="C";
+        orden[2]="D";
+        orden[3]="A";
+        orden[4]="F";
+        orden[5]="E";
+
     } else if (_tipo == 5) {
         tiempoPA = 1;
         tiempoPB = 2;
@@ -84,14 +80,13 @@ Vehiculo::Vehiculo(int _tipo) {
         tiempoPD = 3;
         tiempoPE = 4;
         tiempoPF = 1;
-        /*
-        orden->newNode();
-        orden->newNode();
-        orden->newNode();
-        orden->newNode();
-        orden->newNode();
-        orden->newNode();
-         */
+        orden[0]="E";
+        orden[1]="F";
+        orden[2]="B";
+        orden[3]="C";
+        orden[4]="A";
+        orden[5]="D";
+
     } else if (_tipo == 6){
         tiempoPA = 4;
         tiempoPB = 4;
@@ -99,14 +94,12 @@ Vehiculo::Vehiculo(int _tipo) {
         tiempoPD = 1;
         tiempoPE = 3;
         tiempoPF = 1;
-        /*
-        orden->newNode();
-        orden->newNode();
-        orden->newNode();
-        orden->newNode();
-        orden->newNode();
-        orden->newNode();
-         */
+        orden[0]="F";
+        orden[1]="D";
+        orden[2]="C";
+        orden[3]="B";
+        orden[4]="E";
+        orden[5]="A";
     }
 
     else{
@@ -121,7 +114,7 @@ Vehiculo::Vehiculo(int _tipo) {
  * Getter tipo de vehiculo
  * @return tipo - string
  */
-string Vehiculo::getTipo() {
+int Vehiculo::getTipo() {
     return tipo;
 }
 
@@ -132,7 +125,7 @@ string Vehiculo::getTipo() {
  */
 void Vehiculo::setTipo(int _tipo) {
 
-    tipo = "Vehículo Tipo: " + to_string(_tipo);
+    tipo = _tipo;
     if (_tipo == 1) {
         tiempoPA = 2;
         tiempoPB = 2;
@@ -140,6 +133,13 @@ void Vehiculo::setTipo(int _tipo) {
         tiempoPD = 1;
         tiempoPE = 3;
         tiempoPF = 1;
+        orden[0]="A";
+        orden[1]="B";
+        orden[2]="C";
+        orden[3]="D";
+        orden[4]="E";
+        orden[5]="F";
+
     } else if (_tipo == 2) {
         tiempoPA = 1;
         tiempoPB = 1;
@@ -147,6 +147,13 @@ void Vehiculo::setTipo(int _tipo) {
         tiempoPD = 3;
         tiempoPE = 2;
         tiempoPF = 1;
+        orden[0]="C";
+        orden[1]="A";
+        orden[2]="B";
+        orden[3]="E";
+        orden[4]="D";
+        orden[5]="F";
+
     } else if (_tipo == 3) {
         tiempoPA = 3;
         tiempoPB = 1;
@@ -154,6 +161,13 @@ void Vehiculo::setTipo(int _tipo) {
         tiempoPD = 1;
         tiempoPE = 4;
         tiempoPF = 1;
+        orden[0]="D";
+        orden[1]="E";
+        orden[2]="A";
+        orden[3]="C";
+        orden[4]="B";
+        orden[5]="F";
+
     } else if (_tipo == 4) {
         tiempoPA = 3;
         tiempoPB = 2;
@@ -161,6 +175,13 @@ void Vehiculo::setTipo(int _tipo) {
         tiempoPD = 4;
         tiempoPE = 1;
         tiempoPF = 2;
+        orden[0]="B";
+        orden[1]="C";
+        orden[2]="D";
+        orden[3]="A";
+        orden[4]="F";
+        orden[5]="E";
+
     } else if (_tipo == 5) {
         tiempoPA = 1;
         tiempoPB = 2;
@@ -168,6 +189,13 @@ void Vehiculo::setTipo(int _tipo) {
         tiempoPD = 3;
         tiempoPE = 4;
         tiempoPF = 1;
+        orden[0]="E";
+        orden[1]="F";
+        orden[2]="B";
+        orden[3]="C";
+        orden[4]="A";
+        orden[5]="D";
+
     } else if (_tipo == 6){
         tiempoPA = 4;
         tiempoPB = 4;
@@ -175,6 +203,12 @@ void Vehiculo::setTipo(int _tipo) {
         tiempoPD = 1;
         tiempoPE = 3;
         tiempoPF = 1;
+        orden[0]="F";
+        orden[1]="D";
+        orden[2]="C";
+        orden[3]="B";
+        orden[4]="E";
+        orden[5]="A";
     }
 
     else{
@@ -280,6 +314,9 @@ void Vehiculo::setTiempoPF(int tiempoPF) {
     Vehiculo::tiempoPF = tiempoPF;
 }
 
+string Vehiculo::getOrden() {
+    return orden[0];
+}
 
 ///Metodos
 

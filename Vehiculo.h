@@ -4,7 +4,6 @@
 
 
 #include <iostream>
-#include "List.h"
 
 using namespace std;
 
@@ -17,21 +16,23 @@ using namespace std;
 class Vehiculo {
 
 private:
-    string tipo;
+    int tipo;
     int tiempoPA;
     int tiempoPB;
     int tiempoPC;
     int tiempoPD;
     int tiempoPE;
     int tiempoPF;
-    List* orden; // [A,B,C,D,E,F]
+    string orden[6];
+
 
 public:
+
     ///Constructor
     Vehiculo(int _tipo);
 
     ///Getters & Setters
-    string getTipo();
+    int getTipo();
     void setTipo(int _tipo);
     int getTiempoPA() const;
     void setTiempoPA(int tiempoPA);
@@ -45,6 +46,7 @@ public:
     void setTiempoPE(int tiempoPE);
     int getTiempoPF() const;
     void setTiempoPF(int tiempoPF);
+    string getOrden();
 
     ///Metodos
     void printTimes();
