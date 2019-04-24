@@ -16,7 +16,7 @@ private:
     Node* head;
     ///Cantidad de nodos en List
     int len;
-
+    ///Nombre de List
     string name;
 
 public:
@@ -34,6 +34,8 @@ public:
     void setHead(Node* _head);
     int getLen();
     void setLen(int _len);
+    string getName();
+    void setName(string _name);
 
 };
 

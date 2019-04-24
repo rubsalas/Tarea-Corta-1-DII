@@ -17,6 +17,7 @@ class Vehiculo {
 
 private:
     int tipo;
+    int procesosFaltantes;
     int tiempoPA;
     int tiempoPB;
     int tiempoPC;
@@ -24,7 +25,7 @@ private:
     int tiempoPE;
     int tiempoPF;
     string orden[6];
-    int procesosFaltantes;
+
 
 
 public:
@@ -37,17 +38,13 @@ public:
     int getTiempoProcesoActual();
     void completarProcesoActual();
     void reordenar();
-    void modPA();
-    void modPB();
-    void modPC();
-    void modPD();
-    void modPE();
-    void modPF();
     void printTimes();
 
     ///Getters & Setters
     int getTipo();
     void setTipo(int _tipo);
+    int getProcesosFaltantes();
+    void setProcesosFaltantes(int _procesosFaltantes);
     int getTiempoPA() const;
     void setTiempoPA(int tiempoPA);
     int getTiempoPB() const;

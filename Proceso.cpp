@@ -33,8 +33,7 @@ Proceso::Proceso(string _tipo){
  */
 Vehiculo* Proceso::agendar(Vehiculo* vehiculo) {
 
-    ///Last no está bien implementado.
-
+    ///Verifica si este proceso esta lleno
     checkFull();
 
     if (isFull() != true) {
@@ -43,19 +42,19 @@ Vehiculo* Proceso::agendar(Vehiculo* vehiculo) {
             vehiculo1 = vehiculo;
             ///Verificara si esta lleno el proceso
 
-            cout << "Vehiculo1 del proceso " << tipo << " se encuentra ocupado por un vehiculo tipo " << vehiculo->getTipo() << endl;
+            //cout << "Vehiculo1 del proceso " << tipo << " se encuentra ocupado por un vehiculo tipo " << vehiculo->getTipo() << endl;
         }
         else if (vehiculo2 == nullptr){
             vehiculo2 = vehiculo;
             ///Verificara si esta lleno el proceso
 
-            cout << "Vehiculo2 del proceso " << tipo << " se encuentra ocupado por un vehiculo tipo " << vehiculo->getTipo() << endl;
+            //cout << "Vehiculo2 del proceso " << tipo << " se encuentra ocupado por un vehiculo tipo " << vehiculo->getTipo() << endl;
         }
         else if (vehiculo3 == nullptr){
             vehiculo3 = vehiculo;
             ///Verificara si esta lleno el proceso
 
-            cout << "Vehiculo3 del proceso " << tipo << " se encuentra ocupado por un vehiculo tipo " << vehiculo->getTipo() << endl;
+            //cout << "Vehiculo3 del proceso " << tipo << " se encuentra ocupado por un vehiculo tipo " << vehiculo->getTipo() << endl;
         }
 
         checkFull();
@@ -69,20 +68,20 @@ Vehiculo* Proceso::agendar(Vehiculo* vehiculo) {
 
         if (vehiculoCola == vehiculo1) {
             vehiculo1 = vehiculo;
-            cout << "El vehiculo tipo " << vehiculoCola->getTipo() << " ocupaba Vehiculo1, ahora será ingresado a la cola." << endl;
-            cout << "Vehiculo1 del proceso " << tipo << " se encuentra ahora ocupado por un vehiculo tipo " << vehiculo->getTipo() << endl;
+            //cout << "El vehiculo tipo " << vehiculoCola->getTipo() << " ocupaba Vehiculo1, ahora será ingresado a la cola." << endl;
+            //cout << "Vehiculo1 del proceso " << tipo << " se encuentra ahora ocupado por un vehiculo tipo " << vehiculo->getTipo() << endl;
         }
 
         else if (vehiculoCola == vehiculo2) {
             vehiculo2 = vehiculo;
-            cout << "El vehiculo tipo " << vehiculoCola->getTipo() << " ocupaba Vehiculo2, ahora será ingresado a la cola." << endl;
-            cout << "Vehiculo2 del proceso " << tipo << " se encuentra ahora ocupado por un vehiculo tipo " << vehiculo->getTipo() << endl;
+            //cout << "El vehiculo tipo " << vehiculoCola->getTipo() << " ocupaba Vehiculo2, ahora será ingresado a la cola." << endl;
+            //cout << "Vehiculo2 del proceso " << tipo << " se encuentra ahora ocupado por un vehiculo tipo " << vehiculo->getTipo() << endl;
         }
 
         else if (vehiculoCola == vehiculo3) {
             vehiculo3 = vehiculo;
-            cout << "El vehiculo tipo " << vehiculoCola->getTipo() << " ocupaba Vehiculo3, ahora será ingresado a la cola." << endl;
-            cout << "Vehiculo3 del proceso " << tipo << " se encuentra ahora ocupado por un vehiculo tipo " << vehiculo->getTipo() << endl;
+            //cout << "El vehiculo tipo " << vehiculoCola->getTipo() << " ocupaba Vehiculo3, ahora será ingresado a la cola." << endl;
+            //cout << "Vehiculo3 del proceso " << tipo << " se encuentra ahora ocupado por un vehiculo tipo " << vehiculo->getTipo() << endl;
         }
 
         checkFull();
@@ -178,15 +177,13 @@ Vehiculo* Proceso::porPausar() {
         return vehiculo3;
     }
 
-
-
 }
 
 
 
 /**
- *
- * @return
+ * Procesamiento
+ * @return vehiculosListos - Lista de los vehiculos que pueden cambiar de proceso
  */
 List* Proceso::procesar() {
 
@@ -197,14 +194,17 @@ List* Proceso::procesar() {
     if (vehiculo1 != nullptr) {
 
         if (vehiculo1->getTiempoProcesoActual() == 0) {
-            vehiculo1->reordenar();
 
+            ///Reordena el orden del array de su orden de procesos
+            vehiculo1->reordenar();
             ///Temporal para enviar a la Fabrica a cambiar de Proceso
             Vehiculo* temp = vehiculo1;
             ///Deja el espacio vacio
             vehiculo1 = nullptr;
             ///Ingresa el vehiculo que termina el proceso a una lista para enviar a la Fabrica
             vehiculosListos->newNode(temp);
+
+            cout << "V1: tipo [ ] tiempo restante [ ]" << endl;
 
         } else {
             vehiculo1->completarProcesoActual();
@@ -219,14 +219,17 @@ List* Proceso::procesar() {
     if (vehiculo2 != nullptr) {
 
         if (vehiculo2->getTiempoProcesoActual() == 0) {
-            vehiculo2->reordenar();
 
+            ///Reordena el orden del array de su orden de procesos
+            vehiculo2->reordenar();
             ///Temporal para enviar a la Fabrica a cambiar de Proceso
             Vehiculo* temp = vehiculo2;
             ///Deja el espacio vacio
             vehiculo2 = nullptr;
             ///Ingresa el vehiculo que termina el proceso a una lista para enviar a la Fabrica
             vehiculosListos->newNode(temp);
+
+            cout << "V2: tipo [ ] tiempo restante [ ]" << endl;
 
         }
         else {
@@ -242,14 +245,17 @@ List* Proceso::procesar() {
     if (vehiculo3 != nullptr) {
 
         if (vehiculo3->getTiempoProcesoActual() == 0) {
-            vehiculo3->reordenar();
 
+            ///Reordena el orden del array de su orden de procesos
+            vehiculo3->reordenar();
             ///Temporal para enviar a la Fabrica a cambiar de Proceso
             Vehiculo* temp = vehiculo3;
             ///Deja el espacio vacio
             vehiculo3 = nullptr;
             ///Ingresa el vehiculo que termina el proceso a una lista para enviar a la Fabrica
             vehiculosListos->newNode(temp);
+
+            cout << "V3: tipo [ ] tiempo restante [ ]" << endl;
 
         }
         else {

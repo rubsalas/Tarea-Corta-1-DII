@@ -121,24 +121,7 @@ string Vehiculo::getProcesoActual() {
     return orden[0];
 }
 
-/**
- * Reordena el orden de los procesos del vehiculo
- */
-void Vehiculo::reordenar() {
-    ///Resta uno a los procesos faltantes ya que esto será llamado cuando ya se haya completado un proceso
-    procesosFaltantes--;
 
-    ///Recorrerá el array pasando de posición los procesos
-    if (procesosFaltantes >= 0) {
-        int n = procesosFaltantes;
-        for(int i = 0; i < n; i++) {
-            orden[i] = orden[i+1];
-        }
-        ///Los ultimos van quedando vacios, se rellenan con una "X"
-        orden[n] = "X";
-    }
-
-}
 
 
 /**
@@ -202,6 +185,26 @@ void Vehiculo::completarProcesoActual() {
     else if (procesoActual == "F") {
         setTiempoPF(getTiempoPF() - 1);
     }
+}
+
+
+/**
+ * Reordena el orden de los procesos del vehiculo
+ */
+void Vehiculo::reordenar() {
+    ///Resta uno a los procesos faltantes ya que esto será llamado cuando ya se haya completado un proceso
+    procesosFaltantes--;
+
+    ///Recorrerá el array pasando de posición los procesos
+    if (procesosFaltantes >= 0) {
+        int n = procesosFaltantes;
+        for(int i = 0; i < n; i++) {
+            orden[i] = orden[i+1];
+        }
+        ///Los ultimos van quedando vacios, se rellenan con una "X"
+        orden[n] = "X";
+    }
+
 }
 
 
@@ -329,6 +332,21 @@ void Vehiculo::setTipo(int _tipo) {
 
 }
 
+/**
+ * Getter de cantidad de procesos faltantes de Vehiculo.
+ * @return procesosFaltantes - cantidad
+ */
+int Vehiculo::getProcesosFaltantes() {
+    return procesosFaltantes;
+}
+
+/**
+ * Setter de cantidad de procesos faltantes de Vehiculo.
+ * @param _procesosFaltantes
+ */
+void Vehiculo::setProcesosFaltantes(int _procesosFaltantes) {
+    procesosFaltantes = _procesosFaltantes;
+}
 
 /**
  * Getter del tiempo del Proceso A

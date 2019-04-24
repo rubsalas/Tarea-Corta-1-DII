@@ -44,8 +44,8 @@ void List::newNode(int data){
 
     len+=1;
 
-    cout << "\n" << endl;
-    printList();
+    //cout << "\n" << endl;
+    //printList();
 
 }
 
@@ -68,8 +68,12 @@ void List::newNode(Vehiculo* vehiculo){
 
     len+=1;
 
-    cout << "\n" << endl;
-    printList();
+
+    if (name != "Vehiculos por Cambiar de Proceso") {
+        cout << "\n" << endl;
+        printList();
+    }
+
 
 }
 
@@ -100,8 +104,8 @@ void List::deleteNode(int data){
 
     len-=1;
 
-    cout << "\n" << endl;
-    printList();
+    //cout << "\n" << endl;
+    //printList();
 
 }
 
@@ -110,7 +114,7 @@ void List::deleteNode(int data){
  */
 void List::printList(){
     cout << "List: " << name << endl;
-    cout << "len: " << len << endl;
+    cout << "len: " << len << "     ";
     Node* temp = head;
     while (temp != nullptr) {
         cout << temp->getData()  << ", ";
@@ -153,4 +157,20 @@ int List::getLen() {
  */
 void List::setLen(int _len) {
     len = _len;
+}
+
+/**
+ * Getter del nombre de List.
+ * @return name
+ */
+string List::getName() {
+    return name;
+}
+
+/**
+ * Setter del nombre de List.
+ * @param _name - string
+ */
+void List::setName(string _name) {
+    name = _name;
 }
