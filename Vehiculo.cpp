@@ -17,6 +17,8 @@
  */
 Vehiculo::Vehiculo(int _tipo) {
     tipo = _tipo;
+    procesosFaltantes = 6;
+
     if (_tipo == 1) {
         tiempoPA = 2;
         tiempoPB = 2;
@@ -108,7 +110,140 @@ Vehiculo::Vehiculo(int _tipo) {
 }
 
 
+///Metodos
+
+
+/**
+ * Retornara el primer proceso ubicado en el array del orden
+ * @return string - letra del proceso
+ */
+string Vehiculo::getProcesoActual() {
+    return orden[0];
+}
+
+/**
+ * Reordena el orden de los procesos del vehiculo
+ */
+void Vehiculo::reordenar() {
+    ///Resta uno a los procesos faltantes ya que esto será llamado cuando ya se haya completado un proceso
+    procesosFaltantes--;
+
+    ///Recorrerá el array pasando de posición los procesos
+    if (procesosFaltantes >= 0) {
+        int n = procesosFaltantes;
+        for(int i = 0; i < n; i++) {
+            orden[i] = orden[i+1];
+        }
+        ///Los ultimos van quedando vacios, se rellenan con una "X"
+        orden[n] = "X";
+    }
+
+}
+
+
+/**
+ * Retorna el tiempo que falta del proceso actual
+ * @return tiempo - int
+ */
+int Vehiculo::getTiempoProcesoActual() {
+
+    ///Proceso actual del vehiculo
+    string procesoActual = getProcesoActual();
+
+    int tiempo;
+
+    if (procesoActual == "A") {
+        tiempo = getTiempoPA();
+    }
+    else if (procesoActual == "B") {
+        tiempo = getTiempoPB();
+    }
+    else if (procesoActual == "C") {
+        tiempo = getTiempoPC();
+    }
+    else if (procesoActual == "D") {
+        tiempo = getTiempoPD();
+    }
+    else if (procesoActual == "E") {
+        tiempo = getTiempoPE();
+    }
+    else if (procesoActual == "F") {
+        tiempo = getTiempoPF();
+    }
+
+    return tiempo;
+
+}
+
+
+/**
+ * Resta un segundo a cada proceso cuando dentro de estos son llamados para modificarse
+ */
+void Vehiculo::completarProcesoActual() {
+
+    ///Proceso actual del vehiculo
+    string procesoActual = getProcesoActual();
+
+    if (procesoActual == "A") {
+        setTiempoPA(getTiempoPA() - 1);
+    }
+    else if (procesoActual == "B") {
+        setTiempoPB(getTiempoPB() - 1);
+    }
+    else if (procesoActual == "C") {
+        setTiempoPC(getTiempoPC() - 1);
+    }
+    else if (procesoActual == "D") {
+        setTiempoPD(getTiempoPD() - 1);
+    }
+    else if (procesoActual == "E") {
+        setTiempoPE(getTiempoPE() - 1);
+    }
+    else if (procesoActual == "F") {
+        setTiempoPF(getTiempoPF() - 1);
+    }
+}
+
+void Vehiculo::modPA() {
+    tiempoPA=tiempoPA-1;
+}
+
+void Vehiculo::modPB() {
+    tiempoPB=tiempoPB-1;
+}
+
+void Vehiculo::modPC() {
+    tiempoPC=tiempoPC-1;
+}
+
+void Vehiculo::modPD() {
+    tiempoPD=tiempoPD-1;
+}
+
+void Vehiculo::modPE() {
+    tiempoPE=tiempoPE-1;
+}
+
+void Vehiculo::modPF() {
+    tiempoPF=tiempoPF-1;
+}
+
+/**
+ * Imprime los tiempos asignados de cada Proceso del vehiculo dependiendo de su tipo.
+ */
+void Vehiculo::printTimes() {
+    cout << tipo << endl;
+    cout << "Tiempo A: " + to_string(getTiempoPA()) << endl;
+    cout << "Tiempo B: " + to_string(getTiempoPB()) << endl;
+    cout << "Tiempo C: " + to_string(getTiempoPC()) << endl;
+    cout << "Tiempo D: " + to_string(getTiempoPD()) << endl;
+    cout << "Tiempo E: " + to_string(getTiempoPE()) << endl;
+    cout << "Tiempo F: " + to_string(getTiempoPF()) << endl;
+}
+
+
 ///Getters & Setters
+
 
 /**
  * Getter tipo de vehiculo
@@ -312,48 +447,4 @@ int Vehiculo::getTiempoPF() const {
  */
 void Vehiculo::setTiempoPF(int tiempoPF) {
     Vehiculo::tiempoPF = tiempoPF;
-}
-
-string Vehiculo::getOrden() {
-    return orden[0];
-}
-
-///Metodos
-
-
-/**
- * Imprime los tiempos asignados de cada Proceso del vehiculo dependiendo de su tipo.
- */
-void Vehiculo::printTimes() {
-    cout << tipo << endl;
-    cout << "Tiempo A: " + to_string(getTiempoPA()) << endl;
-    cout << "Tiempo B: " + to_string(getTiempoPB()) << endl;
-    cout << "Tiempo C: " + to_string(getTiempoPC()) << endl;
-    cout << "Tiempo D: " + to_string(getTiempoPD()) << endl;
-    cout << "Tiempo E: " + to_string(getTiempoPE()) << endl;
-    cout << "Tiempo F: " + to_string(getTiempoPF()) << endl;
-}
-
-void Vehiculo::modPA() {
-    tiempoPA=tiempoPA-1;
-}
-
-void Vehiculo::modPB() {
-    tiempoPB=tiempoPB-1;
-}
-
-void Vehiculo::modPC() {
-    tiempoPC=tiempoPC-1;
-}
-
-void Vehiculo::modPD() {
-    tiempoPD=tiempoPD-1;
-}
-
-void Vehiculo::modPE() {
-    tiempoPE=tiempoPE-1;
-}
-
-void Vehiculo::modPF() {
-    tiempoPF=tiempoPF-1;
 }

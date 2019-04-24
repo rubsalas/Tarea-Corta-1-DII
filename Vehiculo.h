@@ -24,12 +24,26 @@ private:
     int tiempoPE;
     int tiempoPF;
     string orden[6];
+    int procesosFaltantes;
 
 
 public:
 
     ///Constructor
     Vehiculo(int _tipo);
+
+    ///Metodos
+    string getProcesoActual();
+    int getTiempoProcesoActual();
+    void completarProcesoActual();
+    void reordenar();
+    void modPA();
+    void modPB();
+    void modPC();
+    void modPD();
+    void modPE();
+    void modPF();
+    void printTimes();
 
     ///Getters & Setters
     int getTipo();
@@ -46,16 +60,6 @@ public:
     void setTiempoPE(int tiempoPE);
     int getTiempoPF() const;
     void setTiempoPF(int tiempoPF);
-    string getOrden();
-
-    ///Metodos
-    void printTimes();
-    void modPA();
-    void modPB();
-    void modPC();
-    void modPD();
-    void modPE();
-    void modPF();
 
 };
 

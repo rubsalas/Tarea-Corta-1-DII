@@ -17,9 +17,9 @@ using namespace std;
  * Constructor de Fabrica
  */
 Fabrica::Fabrica() {
-    listVehiculosInicial = new List();
-    listVehiculosCola = new List();
-    listVehiculosFinalizados = new List();
+    listVehiculosInicial = new List("Inicial");
+    listVehiculosCola = new List("Cola");
+    listVehiculosFinalizados = new List("Terminados");
 
     procesoA = new Proceso("A");
     procesoB = new Proceso("B");
@@ -28,6 +28,128 @@ Fabrica::Fabrica() {
     procesoE = new Proceso("E");
     procesoF = new Proceso("F");
 }
+
+
+///Metodos
+
+
+/**
+ * Inicio de la Fabrica.
+ */
+void Fabrica::initiateFabrica() {
+
+    int timer = 1;
+    bool finish = false;
+
+    procesoInicial();
+
+    while(!finish) {
+
+        if ( (timer % 5) == 0 ) {
+            cout << "Atender de Cola" << endl;
+
+
+
+        }
+        if (listVehiculosInicial->getLen() == 0){
+            //finish=true;
+        }
+
+        cout << "\n\n" << timer << endl;
+        timer++;
+        sleep(1);
+
+        procesoA->procesar();
+        procesoB->procesar();
+        procesoC->procesar();
+        procesoD->procesar();
+        procesoE->procesar();
+        procesoF->procesar();
+
+
+    }
+}
+
+/**
+ * Ingresa un vehiculo a la lista de Vehiuclos de la Fabrica
+ * @param vehiculo - int del numero de vehiculo
+ */
+void Fabrica::addVehiculo(int vehiculo) {
+    listVehiculosInicial->newNode(vehiculo);
+}
+
+void Fabrica::setInProceso(Vehiculo* vehiculoPorAgendar) {
+
+    ///Se obtiene el proceso respectivo al orden del vehiculo
+    string procesoParaAgendar = vehiculoPorAgendar->getProcesoActual();
+
+
+    cout << "Se agendará el vehiculo tipo " << vehiculoPorAgendar->getTipo() << " al proceso tipo " << procesoParaAgendar << endl;
+
+    Vehiculo* vehiculoCola;
+
+    ///Se verifica a cual proceso se agendará el vehiculo
+    if (procesoParaAgendar == "A"){
+        vehiculoCola = procesoA->agendar(vehiculoPorAgendar);
+        procesoA->printAgenda();
+    }
+    else if (procesoParaAgendar == "B"){
+        vehiculoCola = procesoB->agendar(vehiculoPorAgendar);
+        procesoB->printAgenda();
+    }
+    else if (procesoParaAgendar == "C"){
+        vehiculoCola = procesoC->agendar(vehiculoPorAgendar);
+        procesoC->printAgenda();
+    }
+    else if (procesoParaAgendar == "D"){
+        vehiculoCola = procesoD->agendar(vehiculoPorAgendar);
+        procesoD->printAgenda();
+    }
+    else if (procesoParaAgendar == "E"){
+        vehiculoCola = procesoE->agendar(vehiculoPorAgendar);
+        procesoE->printAgenda();
+    }
+    else if (procesoParaAgendar == "F"){
+        vehiculoCola = procesoF->agendar(vehiculoPorAgendar);
+        procesoF->printAgenda();
+    }
+    else {
+        cout << "Proceso no se encuentra definido: " << procesoParaAgendar << endl;
+    }
+
+    if (vehiculoCola != nullptr) {
+        listVehiculosCola->newNode(vehiculoCola->getTipo());
+        cout << "Vehiculo tipo " << vehiculoCola->getTipo() << " ha sido agregado a la cola." << endl;
+    }
+
+}
+
+void Fabrica::procesoInicial() {
+
+    Node* temp = listVehiculosInicial->getHead();
+
+    while (temp != nullptr) {
+        Node* aux = temp->getNext();
+        setInProceso( temp->getVehiculo() );
+
+        ///Se borra el vehiculo de esta lista
+        listVehiculosInicial->deleteNode(temp->getVehiculo()->getTipo());
+
+        temp = aux;
+    }
+
+    cout << "Procesos al Iniciar" << endl;
+    procesoA->printAgenda();
+    procesoB->printAgenda();
+    procesoC->printAgenda();
+    procesoD->printAgenda();
+    procesoE->printAgenda();
+    procesoF->printAgenda();
+    
+}
+
+
+///Getters & Setters
 
 
 /**
@@ -162,50 +284,3 @@ void Fabrica::setProcesoF(Proceso* _procesoF) {
     procesoF = _procesoF;
 }
 
-
-/**
- * Inicio de la Fabrica.
- */
-void Fabrica::initiateFabrica() {
-    int s=1;
-
-    bool finish=false;
-    while(!finish){
-        if (s==6){
-            s=1;
-
-
-
-        }
-        if (listVehiculosInicial->getLen()==0){
-            finish=true;
-        }
-        cout<<s<<endl;
-        s++;
-        sleep(1);
-    }
-}
-
-/**
- * Ingresa un vehiculo a la lista de Vehiuclos de la Fabrica
- * @param vehiculo - int del numero de vehiculo
- */
-void Fabrica::addVehiculo(int vehiculo) {
-    listVehiculosInicial->newNode(vehiculo);
-}
-
-void Fabrica::setInProceso() {
-    Vehiculo *veh = listVehiculosInicial->getHead()->getVehiculo();
-    listVehiculosInicial->deleteNode(veh->getTipo());
-
-    string actual = veh->getOrden();
-
-    if (actual=="A"){
-
-    }
-    else if (actual=="B"){}
-    else if (actual=="C"){}
-    else if (actual=="D"){}
-    else if (actual=="E"){}
-    else if (actual=="F"){}
-}

@@ -12,41 +12,18 @@ using namespace std;
  * @since 16/04/19.
  */
 
+
 /**
  * Constructor de List.
  */
-List::List() {
+List::List(string _name) {
     head = nullptr;
     len = 0;
+    name = _name;
 }
 
-Node* List::getHead() {
-    return head;
-}
 
-/**
- * Setter del head de List.
- * @param _head - Node
- */
-void List::setHead(Node* _head) {
-    head = _head;
-}
-
-/**
- * Getter del length de List.
- * @returns len - Cantidad de nodos en List
- */
-int List::getLen() {
-    return len;
-}
-
-/**
- * Setter del length de List.
- * @param _len - cantidad
- */
-void List::setLen(int _len) {
-    len = _len;
-}
+///Metodos
 
 
 /**
@@ -56,6 +33,30 @@ void List::setLen(int _len) {
 void List::newNode(int data){
 
     Node* nNode = new Node(data);
+
+    if (head == nullptr) {
+        head = nNode;
+    } else {
+        Node* temp = head;
+        head = nNode;
+        nNode->setNext(temp);
+    }
+
+    len+=1;
+
+    cout << "\n" << endl;
+    printList();
+
+}
+
+/**
+ * Crea un nuevo Node o toma uno del Collector para ingresarlo en List.
+ * @param data - numero para el Node
+ */
+void List::newNode(Vehiculo* vehiculo){
+
+    Node* nNode = new Node(vehiculo->getTipo());
+    nNode->setVehiculo(vehiculo);
 
     if (head == nullptr) {
         head = nNode;
@@ -108,7 +109,7 @@ void List::deleteNode(int data){
  * Imprime los nodos en List.
  */
 void List::printList(){
-    cout << "List: " << endl;
+    cout << "List: " << name << endl;
     cout << "len: " << len << endl;
     Node* temp = head;
     while (temp != nullptr) {
@@ -116,4 +117,40 @@ void List::printList(){
         temp = temp->getNext();
     }
     cout << "\n" << endl;
+}
+
+
+///Getters & Setters
+
+
+/**
+ * Getter del head de List.
+ * @return
+ */
+Node* List::getHead() {
+    return head;
+}
+
+/**
+ * Setter del head de List.
+ * @param _head - Node
+ */
+void List::setHead(Node* _head) {
+    head = _head;
+}
+
+/**
+ * Getter del length de List.
+ * @returns len - Cantidad de nodos en List
+ */
+int List::getLen() {
+    return len;
+}
+
+/**
+ * Setter del length de List.
+ * @param _len - cantidad
+ */
+void List::setLen(int _len) {
+    len = _len;
 }

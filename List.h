@@ -17,20 +17,23 @@ private:
     ///Cantidad de nodos en List
     int len;
 
+    string name;
+
 public:
     ///Constructor
-    List();
+    List(string _name);
+
+    ///Metodos
+    void newNode(int data);
+    void newNode(Vehiculo* vehiculo);
+    void deleteNode(int data);
+    void printList();
 
     ///Getters y Setters
     Node* getHead();
     void setHead(Node* _head);
     int getLen();
     void setLen(int _len);
-
-    ///Metodos
-    void newNode(int data);
-    void deleteNode(int data);
-    void printList();
 
 };
 

@@ -23,7 +23,12 @@ private:
     Node* next;
 
 public:
+    ///Constructor
     Node(int _data);
+
+    ///Metodos
+
+    ///Getters & Setters
     int getData();
     void setData(int _data);
     Node* getNext();

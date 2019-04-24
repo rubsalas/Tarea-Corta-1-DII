@@ -6,11 +6,13 @@
 
 using namespace std;
 
+
 /**
  * Representa a un Nodo.
  *
  * @since 16/04/19.
  */
+
 
 /**
  * Constructor de Node.
@@ -20,6 +22,10 @@ Node::Node(int _data) {
     data = _data;
     next = nullptr;
 }
+
+
+///Getters & Setters
+
 
 /**
  * Getter del dato de Node.

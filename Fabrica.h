@@ -38,6 +38,12 @@ public:
     ///Constructor
     Fabrica();
 
+    ///Metodos
+    void addVehiculo(int vehiculo);
+    void initiateFabrica();
+    void setInProceso(Vehiculo* vehiculoPorAgendar);
+    void procesoInicial();
+
     ///Getters y Setters
     List *getListVehiculosInicial();
     void setListVehiculosInicial(List* _listVehiculosInicial);
@@ -58,11 +64,6 @@ public:
     Proceso *getProcesoF();
     void setProcesoF(Proceso* _procesoF);
 
-    ///Metodos
-    void addVehiculo(int vehiculo);
-    void initiateFabrica();
-    void setInProceso();
-    
 };
 
 
