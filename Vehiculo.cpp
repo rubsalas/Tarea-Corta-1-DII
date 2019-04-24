@@ -20,12 +20,12 @@ Vehiculo::Vehiculo(int _tipo) {
     procesosFaltantes = 6;
 
     if (_tipo == 1) {
-        tiempoPA = 2;
-        tiempoPB = 2;
-        tiempoPC = 4;
-        tiempoPD = 1;
-        tiempoPE = 3;
-        tiempoPF = 1;
+        tiempoPA = 10; //2;
+        tiempoPB = 10; //2;
+        tiempoPC = 20; //4;
+        tiempoPD = 5;  //1;
+        tiempoPE = 15; //3;
+        tiempoPF = 5;  //1;
         orden[0]="A";
         orden[1]="B";
         orden[2]="C";
@@ -34,12 +34,12 @@ Vehiculo::Vehiculo(int _tipo) {
         orden[5]="F";
 
     } else if (_tipo == 2) {
-        tiempoPA = 1;
-        tiempoPB = 1;
-        tiempoPC = 2;
-        tiempoPD = 3;
-        tiempoPE = 2;
-        tiempoPF = 1;
+        tiempoPA = 5;  //1;
+        tiempoPB = 5;  //1;
+        tiempoPC = 10; //2;
+        tiempoPD = 15; //3;
+        tiempoPE = 10; //2;
+        tiempoPF = 5;  //1;
         orden[0]="C";
         orden[1]="A";
         orden[2]="B";
@@ -48,12 +48,12 @@ Vehiculo::Vehiculo(int _tipo) {
         orden[5]="F";
 
     } else if (_tipo == 3) {
-        tiempoPA = 3;
-        tiempoPB = 1;
-        tiempoPC = 2;
-        tiempoPD = 1;
-        tiempoPE = 4;
-        tiempoPF = 1;
+        tiempoPA = 15; //3;
+        tiempoPB = 5;  //1;
+        tiempoPC = 10; //2;
+        tiempoPD = 5;  //1;
+        tiempoPE = 20; //4;
+        tiempoPF = 5;  //1;
         orden[0]="D";
         orden[1]="E";
         orden[2]="A";
@@ -62,12 +62,12 @@ Vehiculo::Vehiculo(int _tipo) {
         orden[5]="F";
 
     } else if (_tipo == 4) {
-        tiempoPA = 3;
-        tiempoPB = 2;
-        tiempoPC = 1;
-        tiempoPD = 4;
-        tiempoPE = 1;
-        tiempoPF = 2;
+        tiempoPA = 15; //3;
+        tiempoPB = 10; //2;
+        tiempoPC = 5;  //1;
+        tiempoPD = 20; //4;
+        tiempoPE = 5;  //1;
+        tiempoPF = 10; //2;
         orden[0]="B";
         orden[1]="C";
         orden[2]="D";
@@ -76,12 +76,12 @@ Vehiculo::Vehiculo(int _tipo) {
         orden[5]="E";
 
     } else if (_tipo == 5) {
-        tiempoPA = 1;
-        tiempoPB = 2;
-        tiempoPC = 4;
-        tiempoPD = 3;
-        tiempoPE = 4;
-        tiempoPF = 1;
+        tiempoPA = 5;  //1;
+        tiempoPB = 10; //2;
+        tiempoPC = 20; //4;
+        tiempoPD = 15; //3;
+        tiempoPE = 20; //4;
+        tiempoPF = 5;  //1;
         orden[0]="E";
         orden[1]="F";
         orden[2]="B";
@@ -90,12 +90,12 @@ Vehiculo::Vehiculo(int _tipo) {
         orden[5]="D";
 
     } else if (_tipo == 6){
-        tiempoPA = 4;
-        tiempoPB = 4;
-        tiempoPC = 2;
-        tiempoPD = 1;
-        tiempoPE = 3;
-        tiempoPF = 1;
+        tiempoPA = 20; //4;
+        tiempoPB = 20; //4;
+        tiempoPC = 10; //2;
+        tiempoPD = 5;  //1;
+        tiempoPE = 15; //3;
+        tiempoPF = 5;  //1;
         orden[0]="F";
         orden[1]="D";
         orden[2]="C";
@@ -204,29 +204,6 @@ void Vehiculo::completarProcesoActual() {
     }
 }
 
-void Vehiculo::modPA() {
-    tiempoPA=tiempoPA-1;
-}
-
-void Vehiculo::modPB() {
-    tiempoPB=tiempoPB-1;
-}
-
-void Vehiculo::modPC() {
-    tiempoPC=tiempoPC-1;
-}
-
-void Vehiculo::modPD() {
-    tiempoPD=tiempoPD-1;
-}
-
-void Vehiculo::modPE() {
-    tiempoPE=tiempoPE-1;
-}
-
-void Vehiculo::modPF() {
-    tiempoPF=tiempoPF-1;
-}
 
 /**
  * Imprime los tiempos asignados de cada Proceso del vehiculo dependiendo de su tipo.

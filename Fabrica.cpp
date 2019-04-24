@@ -40,6 +40,7 @@ void Fabrica::initiateFabrica() {
 
     int timer = 1;
     bool finish = false;
+    int cantTotalVehiculos = listVehiculosInicial->getLen();
 
     procesoInicial();
 
@@ -48,24 +49,89 @@ void Fabrica::initiateFabrica() {
         if ( (timer % 5) == 0 ) {
             cout << "Atender de Cola" << endl;
 
+            Node* temp = listVehiculosCola->getHead();
+
+            if (temp != nullptr) {
+                setInProceso(temp->getVehiculo());
+                listVehiculosCola->deleteNode(temp->getData());
+            }
+
+
 
 
         }
-        if (listVehiculosInicial->getLen() == 0){
-            //finish=true;
+        ///Terminación de la Fábrica
+        if (listVehiculosFinalizados->getLen() == cantTotalVehiculos){
+            cout << "\n\nFabrica Finalizada\n\n" << endl;
+            finish=true;
         }
+
+        ///Terminación de la Fábrica PRUEBA
+        if (listVehiculosCola->getLen() == cantTotalVehiculos){
+            cout << "\n\nFabrica Finalizada\n\n" << endl;
+            finish=true;
+        }
+
+
 
         cout << "\n\n" << timer << endl;
         timer++;
         sleep(1);
 
-        procesoA->procesar();
-        procesoB->procesar();
-        procesoC->procesar();
-        procesoD->procesar();
-        procesoE->procesar();
-        procesoF->procesar();
 
+        List* listaA = procesoA->procesar();
+        if (listaA != nullptr) {
+            Node* temp = listaA->getHead();
+            while (temp != nullptr) {
+                setInProceso(temp->getVehiculo());
+                temp = temp->getNext();
+            }
+        }
+
+        List* listaB = procesoB->procesar();
+        if (listaB != nullptr) {
+            Node* temp = listaB->getHead();
+            while (temp != nullptr) {
+                setInProceso(temp->getVehiculo());
+                temp = temp->getNext();
+            }
+        }
+
+        List* listaC = procesoC->procesar();
+        if (listaC != nullptr) {
+            Node* temp = listaC->getHead();
+            while (temp != nullptr) {
+                setInProceso(temp->getVehiculo());
+                temp = temp->getNext();
+            }
+        }
+
+        List* listaD = procesoD->procesar();
+        if (listaD != nullptr) {
+            Node* temp = listaD->getHead();
+            while (temp != nullptr) {
+                setInProceso(temp->getVehiculo());
+                temp = temp->getNext();
+            }
+        }
+
+        List* listaE = procesoE->procesar();
+        if (listaE != nullptr) {
+            Node* temp = listaE->getHead();
+            while (temp != nullptr) {
+                setInProceso(temp->getVehiculo());
+                temp = temp->getNext();
+            }
+        }
+
+        List* listaF = procesoF->procesar();
+        if (listaF != nullptr) {
+            Node* temp = listaF->getHead();
+            while (temp != nullptr) {
+                setInProceso(temp->getVehiculo());
+                temp = temp->getNext();
+            }
+        }
 
     }
 }
@@ -77,6 +143,38 @@ void Fabrica::initiateFabrica() {
 void Fabrica::addVehiculo(int vehiculo) {
     listVehiculosInicial->newNode(vehiculo);
 }
+
+
+
+void Fabrica::procesoInicial() {
+
+    Node* temp = listVehiculosInicial->getHead();
+
+    while (temp != nullptr) {
+
+        Node* aux = temp->getNext();
+
+        setInProceso( temp->getVehiculo() );
+
+        ///Se borra el vehiculo de esta lista
+        listVehiculosInicial->deleteNode(temp->getVehiculo()->getTipo());
+
+        temp = aux;
+    }
+
+    cout << "\nProcesos al Iniciar" << endl;
+    procesoA->printAgenda();
+    procesoB->printAgenda();
+    procesoC->printAgenda();
+    procesoD->printAgenda();
+    procesoE->printAgenda();
+    procesoF->printAgenda();
+
+    cout << "\nCola al Iniciar" << endl;
+    listVehiculosCola->printList();
+
+}
+
 
 void Fabrica::setInProceso(Vehiculo* vehiculoPorAgendar) {
 
@@ -91,27 +189,27 @@ void Fabrica::setInProceso(Vehiculo* vehiculoPorAgendar) {
     ///Se verifica a cual proceso se agendará el vehiculo
     if (procesoParaAgendar == "A"){
         vehiculoCola = procesoA->agendar(vehiculoPorAgendar);
-        procesoA->printAgenda();
+        //procesoA->printAgenda();
     }
     else if (procesoParaAgendar == "B"){
         vehiculoCola = procesoB->agendar(vehiculoPorAgendar);
-        procesoB->printAgenda();
+        //procesoB->printAgenda();
     }
     else if (procesoParaAgendar == "C"){
         vehiculoCola = procesoC->agendar(vehiculoPorAgendar);
-        procesoC->printAgenda();
+        //procesoC->printAgenda();
     }
     else if (procesoParaAgendar == "D"){
         vehiculoCola = procesoD->agendar(vehiculoPorAgendar);
-        procesoD->printAgenda();
+        //procesoD->printAgenda();
     }
     else if (procesoParaAgendar == "E"){
         vehiculoCola = procesoE->agendar(vehiculoPorAgendar);
-        procesoE->printAgenda();
+        //procesoE->printAgenda();
     }
     else if (procesoParaAgendar == "F"){
         vehiculoCola = procesoF->agendar(vehiculoPorAgendar);
-        procesoF->printAgenda();
+        //procesoF->printAgenda();
     }
     else {
         cout << "Proceso no se encuentra definido: " << procesoParaAgendar << endl;
@@ -122,30 +220,6 @@ void Fabrica::setInProceso(Vehiculo* vehiculoPorAgendar) {
         cout << "Vehiculo tipo " << vehiculoCola->getTipo() << " ha sido agregado a la cola." << endl;
     }
 
-}
-
-void Fabrica::procesoInicial() {
-
-    Node* temp = listVehiculosInicial->getHead();
-
-    while (temp != nullptr) {
-        Node* aux = temp->getNext();
-        setInProceso( temp->getVehiculo() );
-
-        ///Se borra el vehiculo de esta lista
-        listVehiculosInicial->deleteNode(temp->getVehiculo()->getTipo());
-
-        temp = aux;
-    }
-
-    cout << "Procesos al Iniciar" << endl;
-    procesoA->printAgenda();
-    procesoB->printAgenda();
-    procesoC->printAgenda();
-    procesoD->printAgenda();
-    procesoE->printAgenda();
-    procesoF->printAgenda();
-    
 }
 
 

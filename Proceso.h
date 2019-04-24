@@ -22,7 +22,9 @@ public:
 
     ///Metodos
     Vehiculo* agendar(Vehiculo* vehiculo);
-    void procesar();
+    List* procesar();
+    void checkFull();
+    Vehiculo* porPausar();
     void printAgenda();
 
     ///Getters & Setters
