@@ -114,13 +114,24 @@ void List::deleteNode(int data){
  */
 void List::printList(){
     cout << "List: " << name << endl;
-    cout << "len: " << len << "     ";
+    cout << "length: " << len << "\n[ ";
     Node* temp = head;
-    while (temp != 0) {
-        cout << temp->getData()  << ", ";
-        temp = temp->getNext();
+    while (temp != nullptr) {
+        ///Para que no imprima el ultimo con una coma
+        if (temp->getNext() == nullptr) {
+            cout << temp->getVehiculo()->getTipo() ;
+            break;
+        }
+
+        while (temp != 0) {
+            cout << temp->getVehiculo()->getTipo() << ", ";
+            temp = temp->getNext();
+        }
+
+
     }
-    cout << "\n" << endl;
+
+    cout << " ]" << endl;
 }
 
 

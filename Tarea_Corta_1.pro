@@ -20,7 +20,8 @@ SOURCES += main.cpp\
     List.cpp \
     Node.cpp \
     Proceso.cpp \
-    Vehiculo.cpp
+    Vehiculo.cpp \
+    cola.cpp
 
 HEADERS  += mainwindow.h \
     time.h \
@@ -30,7 +31,8 @@ HEADERS  += mainwindow.h \
     List.h \
     Node.h \
     Proceso.h \
-    Vehiculo.h
+    Vehiculo.h \
+    cola.h
 
 FORMS    += mainwindow.ui \
     fabricaf.ui

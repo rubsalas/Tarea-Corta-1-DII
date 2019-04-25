@@ -27,7 +27,7 @@ FabricaF::FabricaF(QWidget *parent) :
     ui->setupUi(this);
 
     listVehiculosInicial = new List("Inicial");
-    listVehiculosCola = new List("Cola");
+    colaVehiculos = new Cola();
     listVehiculosFinalizados = new List("Terminados");
 
     procesoA = new Proceso("A");
@@ -69,6 +69,8 @@ void FabricaF::initiateFabrica() {
 
     bThread->start(QThread::HighestPriority);
 
+    bThread->exit();
+
     int timer = 1;
     int minutos = 0;
 
@@ -84,11 +86,13 @@ void FabricaF::initiateFabrica() {
         if ( (timer % 5) == 0 ) {
             cout << "Atender Cola" << endl;
 
-            Node* temp = listVehiculosCola->getHead();
+            Node* temp = colaVehiculos->getFront();
 
-            if (temp != 0) {
+            if (temp != nullptr) {
+
                 setInProceso(temp->getVehiculo());
-                listVehiculosCola->deleteNode(temp->getData());
+                colaVehiculos->remove();
+
             }
 
 
@@ -160,7 +164,7 @@ void FabricaF::initiateFabrica() {
         }
 
         cout << "\n";
-        listVehiculosCola->printList();
+        colaVehiculos->printCola();
         getListVehiculosFinalizados()->printList();
 
         ///Modifica los labels del los vehiculos de los procesos con sus tiempos respectivos
@@ -207,6 +211,9 @@ void FabricaF::initiateFabrica() {
         ui->T3F->setText("V "+QString::number(procesoF->getVehiculo3()->getTiempoPF()));
 */
     });
+
+    bThread->exit();
+
 }
 
 void FabricaF::procesoInicial() {
@@ -234,7 +241,7 @@ void FabricaF::procesoInicial() {
     procesoF->printAgenda();
 
     cout << "\nCola al Iniciar" << endl;
-    listVehiculosCola->printList();
+    colaVehiculos->printCola();
 
 }
 
@@ -283,7 +290,7 @@ void FabricaF::setInProceso(Vehiculo* vehiculoPorAgendar) {
         }
 
         if (vehiculoCola != 0) {
-            listVehiculosCola->newNode(vehiculoCola->getTipo());
+            colaVehiculos->add(vehiculoCola);
             //cout << "Vehiculo tipo " << vehiculoCola->getTipo() << " ha sido agregado a la cola." << endl;
         }
 
@@ -328,16 +335,16 @@ void FabricaF::setListVehiculosInicial(List *listVehiculosInicial) {
  *
  * @return
  */
-List *FabricaF::getListVehiculosCola() {
-    return listVehiculosCola;
+Cola* FabricaF::getColaVehiculos() {
+    return colaVehiculos;
 }
 
 /**
  *
  * @param listVehiculosCola
  */
-void FabricaF::setListVehiculosCola(List *listVehiculosCola) {
-    FabricaF::listVehiculosCola = listVehiculosCola;
+void FabricaF::setColaVehiculos(Cola* _colaVehiculos) {
+    FabricaF::colaVehiculos = _colaVehiculos;
 }
 
 /**

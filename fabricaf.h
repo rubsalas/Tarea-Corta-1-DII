@@ -14,6 +14,7 @@
 #include "Vehiculo.h"
 #include "Node.h"
 #include "Proceso.h"
+#include "cola.h"
 
 using  namespace std;
 
@@ -43,23 +44,23 @@ public:
     void procesoInicial();
 
     ///Getters y Setters
-    List *getListVehiculosInicial();
+    List* getListVehiculosInicial();
     void setListVehiculosInicial(List* _listVehiculosInicial);
-    List *getListVehiculosCola();
-    void setListVehiculosCola(List* _listVehiculosCola);
-    List *getListVehiculosFinalizados();
+    Cola* getColaVehiculos();
+    void setColaVehiculos(Cola* _colaVehiculos);
+    List* getListVehiculosFinalizados();
     void setListVehiculosFinalizados(List* _listVehiculosFinalizados);
-    Proceso *getProcesoA();
+    Proceso* getProcesoA();
     void setProcesoA(Proceso* _procesoA);
-    Proceso *getProcesoB();
+    Proceso* getProcesoB();
     void setProcesoB(Proceso* _procesoB);
-    Proceso *getProcesoC();
+    Proceso* getProcesoC();
     void setProcesoC(Proceso* _procesoC);
-    Proceso *getProcesoD();
+    Proceso* getProcesoD();
     void setProcesoD(Proceso* _procesoD);
-    Proceso *getProcesoE();
+    Proceso* getProcesoE();
     void setProcesoE(Proceso* _procesoE);
-    Proceso *getProcesoF();
+    Proceso* getProcesoF();
     void setProcesoF(Proceso* _procesoF);
 
 
@@ -69,7 +70,7 @@ private:
     ThreadProcesos *bThread;
 
     List* listVehiculosInicial;
-    List* listVehiculosCola;
+    Cola* colaVehiculos;
     List* listVehiculosFinalizados;
     Proceso* procesoA;
     Proceso* procesoB;
