@@ -4,6 +4,7 @@
 
 
 #include <iostream>
+#include <QString>
 
 using namespace std;
 

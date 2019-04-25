@@ -17,7 +17,7 @@ using namespace std;
  * Constructor de List.
  */
 List::List(string _name) {
-    head = nullptr;
+    head = 0;
     len = 0;
     name = _name;
 }
@@ -34,7 +34,7 @@ void List::newNode(int data){
 
     Node* nNode = new Node(data);
 
-    if (head == nullptr) {
+    if (head == 0) {
         head = nNode;
     } else {
         Node* temp = head;
@@ -58,7 +58,7 @@ void List::newNode(Vehiculo* vehiculo){
     Node* nNode = new Node(vehiculo->getTipo());
     nNode->setVehiculo(vehiculo);
 
-    if (head == nullptr) {
+    if (head == 0) {
         head = nNode;
     } else {
         Node* temp = head;
@@ -82,14 +82,14 @@ void List::newNode(Vehiculo* vehiculo){
  * @param data
  */
 void List::deleteNode(int data){
-    Node* delNode = nullptr;
+    Node* delNode = 0;
     Node* temp = head;
     Node* aux = head;
-    while (aux != nullptr && aux->getData() != data) {
+    while (aux != 0 && aux->getData() != data) {
         temp = aux;
         aux = aux->getNext();
     }
-    if (aux == nullptr) {
+    if (aux == 0) {
         cout << data << " no esta en la lista\n" << endl;
     } else {
         delNode = aux;
@@ -100,7 +100,7 @@ void List::deleteNode(int data){
         }
     }
 
-    delNode->setNext(nullptr);
+    delNode->setNext(0);
 
     len-=1;
 
@@ -116,7 +116,7 @@ void List::printList(){
     cout << "List: " << name << endl;
     cout << "len: " << len << "     ";
     Node* temp = head;
-    while (temp != nullptr) {
+    while (temp != 0) {
         cout << temp->getData()  << ", ";
         temp = temp->getNext();
     }

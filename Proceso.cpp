@@ -15,10 +15,10 @@
  */
 Proceso::Proceso(string _tipo){
     tipo = _tipo;
-    vehiculo1 = nullptr;
-    vehiculo2 = nullptr;
-    vehiculo3 = nullptr;
-    last = nullptr;
+    vehiculo1 = 0;
+    vehiculo2 = 0;
+    vehiculo3 = 0;
+    last = 0;
 }
 
 
@@ -38,19 +38,19 @@ Vehiculo* Proceso::agendar(Vehiculo* vehiculo) {
 
     if (isFull() != true) {
 
-        if (vehiculo1 == nullptr){
+        if (vehiculo1 == 0){
             vehiculo1 = vehiculo;
             ///Verificara si esta lleno el proceso
 
             //cout << "Vehiculo1 del proceso " << tipo << " se encuentra ocupado por un vehiculo tipo " << vehiculo->getTipo() << endl;
         }
-        else if (vehiculo2 == nullptr){
+        else if (vehiculo2 == 0){
             vehiculo2 = vehiculo;
             ///Verificara si esta lleno el proceso
 
             //cout << "Vehiculo2 del proceso " << tipo << " se encuentra ocupado por un vehiculo tipo " << vehiculo->getTipo() << endl;
         }
-        else if (vehiculo3 == nullptr){
+        else if (vehiculo3 == 0){
             vehiculo3 = vehiculo;
             ///Verificara si esta lleno el proceso
 
@@ -59,7 +59,7 @@ Vehiculo* Proceso::agendar(Vehiculo* vehiculo) {
 
         checkFull();
 
-        return nullptr;
+        return 0;
 
     }
     else{
@@ -95,7 +95,7 @@ Vehiculo* Proceso::agendar(Vehiculo* vehiculo) {
  * Verifica si el proceso esta lleno
  */
 void Proceso::checkFull() {
-    if (vehiculo1 != nullptr && vehiculo2 != nullptr && vehiculo3 != nullptr) {
+    if (vehiculo1 != 0 && vehiculo2 != 0 && vehiculo3 != 0) {
         setFull(true);
     } else {
         setFull(false);
@@ -127,7 +127,7 @@ Vehiculo* Proceso::porPausar() {
     }
 
     ///Cuando no esta el 1
-    else if (vehiculo1 == nullptr && vehiculo2 != nullptr && vehiculo3 != nullptr) {
+    else if (vehiculo1 == 0 && vehiculo2 != 0 && vehiculo3 != 0) {
         int tiempo2 = vehiculo2->getTiempoProcesoActual();
         int tiempo3 = vehiculo3->getTiempoProcesoActual();
 
@@ -139,7 +139,7 @@ Vehiculo* Proceso::porPausar() {
     }
 
     ///Cuando no esta el 2
-    else if (vehiculo1 != nullptr && vehiculo2 == nullptr && vehiculo3 != nullptr) {
+    else if (vehiculo1 != 0 && vehiculo2 == 0 && vehiculo3 != 0) {
         int tiempo1 = vehiculo2->getTiempoProcesoActual();
         int tiempo3 = vehiculo3->getTiempoProcesoActual();
 
@@ -151,7 +151,7 @@ Vehiculo* Proceso::porPausar() {
     }
 
     ///Cuando no esta el 3
-    else if (vehiculo1 != nullptr && vehiculo2 != nullptr && vehiculo3 == nullptr) {
+    else if (vehiculo1 != 0 && vehiculo2 != 0 && vehiculo3 == 0) {
         int tiempo2 = vehiculo2->getTiempoProcesoActual();
         int tiempo1 = vehiculo3->getTiempoProcesoActual();
 
@@ -163,17 +163,17 @@ Vehiculo* Proceso::porPausar() {
     }
 
     ///Cuando solo esta el vehiculo1
-    else if (vehiculo1 != nullptr && vehiculo2 == nullptr && vehiculo3 == nullptr) {
+    else if (vehiculo1 != 0 && vehiculo2 == 0 && vehiculo3 == 0) {
         return vehiculo1;
     }
 
         ///Cuando solo esta el vehiculo2
-    else if (vehiculo1 == nullptr && vehiculo2 != nullptr && vehiculo3 == nullptr) {
+    else if (vehiculo1 == 0 && vehiculo2 != 0 && vehiculo3 == 0) {
         return vehiculo2;
     }
 
     ///Cuando solo esta el vehiculo3
-    else if (vehiculo1 == nullptr && vehiculo2 == nullptr && vehiculo3 != nullptr) {
+    else if (vehiculo1 == 0 && vehiculo2 == 0 && vehiculo3 != 0) {
         return vehiculo3;
     }
 
@@ -191,7 +191,7 @@ List* Proceso::procesar() {
 
     List* vehiculosListos = new List("Vehiculos por Cambiar de Proceso");
 
-    if (vehiculo1 != nullptr) {
+    if (vehiculo1 != 0) {
 
         if (vehiculo1->getTiempoProcesoActual() == 0) {
 
@@ -200,7 +200,7 @@ List* Proceso::procesar() {
             ///Temporal para enviar a la Fabrica a cambiar de Proceso
             Vehiculo* temp = vehiculo1;
             ///Deja el espacio vacio
-            vehiculo1 = nullptr;
+            vehiculo1 = 0;
             ///Ingresa el vehiculo que termina el proceso a una lista para enviar a la Fabrica
             vehiculosListos->newNode(temp);
 
@@ -216,7 +216,7 @@ List* Proceso::procesar() {
         cout << "V1: tipo [ ] tiempo restante [ ]" << endl;
     }
 
-    if (vehiculo2 != nullptr) {
+    if (vehiculo2 != 0) {
 
         if (vehiculo2->getTiempoProcesoActual() == 0) {
 
@@ -225,7 +225,7 @@ List* Proceso::procesar() {
             ///Temporal para enviar a la Fabrica a cambiar de Proceso
             Vehiculo* temp = vehiculo2;
             ///Deja el espacio vacio
-            vehiculo2 = nullptr;
+            vehiculo2 = 0;
             ///Ingresa el vehiculo que termina el proceso a una lista para enviar a la Fabrica
             vehiculosListos->newNode(temp);
 
@@ -242,7 +242,7 @@ List* Proceso::procesar() {
         cout << "V2: tipo [ ] tiempo restante [ ]" << endl;
     }
 
-    if (vehiculo3 != nullptr) {
+    if (vehiculo3 != 0) {
 
         if (vehiculo3->getTiempoProcesoActual() == 0) {
 
@@ -251,7 +251,7 @@ List* Proceso::procesar() {
             ///Temporal para enviar a la Fabrica a cambiar de Proceso
             Vehiculo* temp = vehiculo3;
             ///Deja el espacio vacio
-            vehiculo3 = nullptr;
+            vehiculo3 = 0;
             ///Ingresa el vehiculo que termina el proceso a una lista para enviar a la Fabrica
             vehiculosListos->newNode(temp);
 
@@ -279,19 +279,19 @@ void Proceso::printAgenda() {
 
     cout << "Agenda Proceso " << tipo << ":" << endl;
 
-    if (vehiculo1 != nullptr) {
+    if (vehiculo1 != 0) {
         cout << "V1: tipo [" << vehiculo1->getTipo() << "] tiempo restante [" << vehiculo1->getTiempoProcesoActual() << "]" << endl;
     } else {
         cout << "V1: tipo [ ] tiempo restante [ ]" << endl;
     }
 
-    if (vehiculo2 != nullptr) {
+    if (vehiculo2 != 0) {
         cout << "V2: tipo [" << vehiculo2->getTipo() << "] tiempo restante [" << vehiculo2->getTiempoProcesoActual() << "]" << endl;
     } else {
         cout << "V2: tipo [ ] tiempo restante [ ]" << endl;
     }
 
-    if (vehiculo3 != nullptr) {
+    if (vehiculo3 != 0) {
         cout << "V3: tipo [" << vehiculo3->getTipo() << "] tiempo restante [" << vehiculo3->getTiempoProcesoActual() << "]" << endl;
     } else {
         cout << "V3: tipo [ ] tiempo restante [ ]" << endl;

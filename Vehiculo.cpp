@@ -213,12 +213,12 @@ void Vehiculo::reordenar() {
  */
 void Vehiculo::printTimes() {
     cout << tipo << endl;
-    cout << "Tiempo A: " + to_string(getTiempoPA()) << endl;
-    cout << "Tiempo B: " + to_string(getTiempoPB()) << endl;
-    cout << "Tiempo C: " + to_string(getTiempoPC()) << endl;
-    cout << "Tiempo D: " + to_string(getTiempoPD()) << endl;
-    cout << "Tiempo E: " + to_string(getTiempoPE()) << endl;
-    cout << "Tiempo F: " + to_string(getTiempoPF()) << endl;
+    cout << "Tiempo A: " + (QString::number(getTiempoPA())).toStdString() << endl;
+    cout << "Tiempo B: " + (QString::number(getTiempoPB())).toStdString() << endl;
+    cout << "Tiempo C: " + (QString::number(getTiempoPC())).toStdString() << endl;
+    cout << "Tiempo D: " + (QString::number(getTiempoPD())).toStdString() << endl;
+    cout << "Tiempo E: " + (QString::number(getTiempoPE())).toStdString() << endl;
+    cout << "Tiempo F: " + (QString::number(getTiempoPF())).toStdString() << endl;
 }
 
 

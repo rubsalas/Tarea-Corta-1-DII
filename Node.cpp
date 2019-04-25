@@ -20,7 +20,7 @@ using namespace std;
 Node::Node(int _data) {
     vehiculo = new Vehiculo(_data);
     data = _data;
-    next = nullptr;
+    next = 0;
 }
 
 
